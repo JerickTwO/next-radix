@@ -74,7 +74,7 @@ function SignupForm() {
             return (
               <TextField.Root
                 type="email"
-                placeholder="email@ejemplo.com"
+                placeholder="email@example.com"
                 {...field}
               >
                 <TextField.Slot>

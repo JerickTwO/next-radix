@@ -36,7 +36,7 @@ function SigninForm() {
             return (
               <TextField.Root
                 type="email"
-                placeholder="email@ejemplo.com"
+                placeholder="email@example.com"
                 autoFocus
                 {...field}
               >
