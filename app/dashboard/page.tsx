@@ -1,6 +1,12 @@
+import { Button } from "@radix-ui/themes"
+
 function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <>
+      <Button>
+        Volver
+      </Button>
+    </>
   )
 }
 
