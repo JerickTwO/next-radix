@@ -1,38 +1,34 @@
-import React from 'react'
-import { Flex, Heading, Link } from '@radix-ui/themes'
-import NextLink from 'next/link'
+"use client";
+import { Container, Flex, Heading, Link } from "@radix-ui/themes";
+import NextLink from "next/link";
 
 function Navbar() {
-    return (
-        <nav>
-            <Heading>NAVBAR</Heading>
-            <ul>
-                <Flex direction='row' className='gap-x-5 '>
-                    <li>
-                        <Link asChild className='cursor-pointer'>
-                            <NextLink href="/">Home</NextLink>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link asChild className='cursor-pointer'>
-                            <NextLink href="/auth/login">Login</NextLink>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link asChild className='cursor-pointer'>
-                            <NextLink href="/auth/register">Register</NextLink>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link asChild className='cursor-pointer'>
-                            <NextLink href="/dashboard">Dashboard</NextLink>
-                        </Link>
-                    </li>
-                </Flex>
-
-            </ul>
-        </nav>
-    )
+  return (
+    <nav className="bg-zinc-950 py-4">
+      <Container>
+        <Flex justify="between" align="center">
+          <NextLink href="/">Navbar</NextLink>
+          <ul className="flex gap-x-2">
+            <li className="cursor-pointer">
+              <Link asChild>
+                <NextLink href="/dashboard">Dashboard</NextLink>
+              </Link>
+            </li>
+            <li className="cursor-pointer">
+              <Link asChild>
+                <NextLink href="/auth/login">Login</NextLink>
+              </Link>
+            </li>
+            <li className="cursor-pointer">
+              <Link asChild>
+                <NextLink href="/auth/register">Register</NextLink>
+              </Link>
+            </li>
+          </ul>
+        </Flex>
+      </Container>
+    </nav>
+  );
 }
 
-export default Navbar
+export default Navbar;

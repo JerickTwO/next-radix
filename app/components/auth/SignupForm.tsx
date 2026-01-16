@@ -7,6 +7,8 @@ import {
 import { Button, Flex, Text, TextField } from "@radix-ui/themes";
 import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 function SignupForm() {
   const {
@@ -20,8 +22,21 @@ function SignupForm() {
       password: "",
     },
   });
+  const router = useRouter();
   const onSubmit = handleSubmit(async (data) => {
     const res = await axios.post("/api/auth/register", data);
+    if (res.status === 201) {
+      const result = await signIn('credentials', {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      }); 
+      if (!result) {
+        console.error(res.data);
+        return;
+      }
+      router.push("/dashboard");
+    }
   });
   return (
     <form onSubmit={onSubmit}>
@@ -127,7 +142,9 @@ function SignupForm() {
             {errors.password.message}
           </Text>
         )}
-        <Button type="submit">Sign In</Button>
+        <Button color="blue" type="submit">
+          Sign Up
+        </Button>
       </Flex>
     </form>
   );
