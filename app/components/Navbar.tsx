@@ -13,24 +13,31 @@ function Navbar() {
           <NextLink href="/">Navbar</NextLink>
           <ul className="flex gap-x-2 items-center">
             {session ? (
-              <li className="cursor-pointer">
-                <DropdownMenu.Root>
-                  <DropdownMenu.Trigger>
-                    <Button variant="soft">
-                      {session?.user?.name || "User"}
-                      <DropdownMenu.TriggerIcon />
-                    </Button>
-                  </DropdownMenu.Trigger>
-                  <DropdownMenu.Content>
-                    <DropdownMenu.Item>My Profile</DropdownMenu.Item>
-                    <DropdownMenu.Item>Settings</DropdownMenu.Item>
-                    <DropdownMenu.Separator />
-                    <DropdownMenu.Item color="red" onClick={() => signOut()}>
-                      Logout
-                    </DropdownMenu.Item>
-                  </DropdownMenu.Content>
-                </DropdownMenu.Root>
-              </li>
+              <>
+                <li className="cursor-pointer">
+                  <Link asChild>
+                    <NextLink href="/dashboard">Dashboard</NextLink>
+                  </Link>
+                </li>
+                <li className="cursor-pointer">
+                  <DropdownMenu.Root>
+                    <DropdownMenu.Trigger>
+                      <Button variant="soft">
+                        {session?.user?.name || "User"}
+                        <DropdownMenu.TriggerIcon />
+                      </Button>
+                    </DropdownMenu.Trigger>
+                    <DropdownMenu.Content>
+                      <DropdownMenu.Item>My Profile</DropdownMenu.Item>
+                      <DropdownMenu.Item>Settings</DropdownMenu.Item>
+                      <DropdownMenu.Separator />
+                      <DropdownMenu.Item color="red" onClick={() => signOut()}>
+                        Logout
+                      </DropdownMenu.Item>
+                    </DropdownMenu.Content>
+                  </DropdownMenu.Root>
+                </li>
+              </>
             ) : (
               <>
                 <li className="cursor-pointer">
@@ -41,11 +48,6 @@ function Navbar() {
                 <li className="cursor-pointer">
                   <Link asChild>
                     <NextLink href="/auth/register">Register</NextLink>
-                  </Link>
-                </li>
-                <li className="cursor-pointer">
-                  <Link asChild>
-                    <NextLink href="/dashboard">Dashboard</NextLink>
                   </Link>
                 </li>
               </>
